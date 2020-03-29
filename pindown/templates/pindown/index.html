@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pindown</title>
+
+    </head>
+    <body>
+        <h1 id="title">Pindown</h1>
+        {% if logged_in %}
+            <h2>Welcome {{uname}}!</h2>
+        {% else %}
+            <h2>Please Log in to use Pindown</h2>
+            <form class="login" id="mainLogin" action="/pindown/login/" method="post">
+                {% csrf_token %}
+                {{form}}
+                <label for="uname">Pinterest Username:</label><br>
+                <input type="text" id="uname" name="uname"><br>
+                <label for="psswd">Pinterest Password:</label><br>
+                <input type="password" id="psswd" name="psswd"><br>
+                <input type="submit" value="Log in">
+
+            </form>
+        {% endif %}
+    </body>
+</html>
